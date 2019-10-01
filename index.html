@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <main id="crear-pacientes">
+        <div class="contenedor">
+            <h1>Dar de alta un Paciente</h1>
+
+            <div class="inputs">
+                Nombre <input type="text" id="nombre" value="" required>
+                Apellido <input type="text" id="apellido" value="" required>
+                D.N.I. <input type="tel" id="dni" value="" required>
+            </div>
+            <button type="submit" id="agregar" onclick="crearPaciente()">Dar de alta</button>
+
+        </div>
+        <ul id="pacientes"></ul>
+    </main>
+
+    <section id="crear-doctor">
+        <div class="contenedor">
+            <h1>Dar de alta un Doctor</h1>
+
+            <div class="inputs">
+                Nombre <input type="text" id="nombre-doc" value="" required>
+                Apellido <input type="text" id="apellido-doc" value="" required>
+                D.N.I. <input type="tel" id="dni-doc" value="" required>
+                <div class="opciones">
+                    <select id="especialidades" name="especialidades">
+                        <option value="none" disabled selected>Elije una Especialidad&hellip;</option>
+                        <option value="0">Odontologo</option>
+                        <option value="1">Pediatra</option>
+                        <option value="2">Oncologo</option>
+                        <option value="3">Cirujano</option>
+                        <option value="4">Podologo</option>
+                    </select>
+                </div>
+
+            </div>
+            <button type="submit" id="agregar" onclick="crearEspecialista()">Dar de alta</button>
+        </div>
+        <ul id="doctores"></ul>
+
+    </section>
+
+    <section id="solicitar-turno">
+        <div id="hola-paciente" class="paciente"></div>
+
+        <div class="contenedor">
+            <h1>Solicitar un turno</h1>
+            <div class="inputs">
+                <div class="opciones">
+                    <select id="turno-con" name="turno con">
+                        <option value="none" disabled selected>Elije una Especialidad&hellip;</option>
+                        <option value="Odontologo">Odontologo</option>
+                        <option value="Pediatra">Pediatra</option>
+                        <option value="Oncologo">Oncologo</option>
+                        <option value="Cirujano">Cirujano</option>
+                        <option value="Podologo">Podologo</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" id="agregar" onclick="solicitarTurno()">Solicitar Turno</button>
+        </div>
+
+    </section>
+    <section id="modificar-doctor">
+        <div id="hola-doctor" class="paciente"></div>
+        <div class="contenedor">
+            <h1>Modifique sus turnos</h1>
+            <div id="cantidad-turnos"></div>
+            <div class="botones-turnos">
+                <button type="submit" id="agregar-turno" value="true" onclick="modificarTurno(this.id)">Agregar Turno</button>
+                <button type="submit" id="quitar-turno" value="false" onclick="modificarTurno(this.id)">Quitar Turno</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="Turnero.js"></script>
+</body>
+
+</html>
