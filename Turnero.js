@@ -84,7 +84,7 @@ function crearPaciente() {
     var nuevoPaciente = new Paciente(nombrePaciente, apellidoPaciente, dniPaciente);
     pacientes.push(nuevoPaciente);
     alert("Bienvenido " + nombrePaciente + " " + apellidoPaciente + ". A continuación elija el profesional con quien quiere el turno.")
-    
+
     holaPaciente()
     var cajaPaciente = document.createElement('li');
     cajaPaciente.className = 'botonesPacientes';
@@ -95,13 +95,19 @@ function crearPaciente() {
     seccionPacientes.appendChild(cajaPaciente);
 
 }
+var pacientesLista = [];
 
 function holaPaciente() {
-    var holaPaciente = document.createElement('p');
+    //var holaPaciente = document.createElement('p');
     var info = document.createTextNode("Hola " + pacientes[pacientes.length - 1].nombre + " " + pacientes[pacientes.length - 1].apellido)
-    holaPaciente.appendChild(info);
+    pacientesLista.push(info);
     var contenedorHolaPaciente = document.getElementById('hola-paciente')
-    contenedorHolaPaciente.appendChild(holaPaciente);
+    var ultimo = pacientesLista.length - 1;
+    console.log(ultimo);
+    if (contenedorHolaPaciente.childNodes[0]) {
+        contenedorHolaPaciente.removeChild(contenedorHolaPaciente.childNodes[0]);
+    }
+    contenedorHolaPaciente.appendChild(pacientesLista[ultimo]);
 }
 
 function crearEspecialista() {
@@ -115,8 +121,8 @@ function crearEspecialista() {
     especialistas.push(especialista)
     alert("Bienvenido Dr/Dra " + nombreEspecialista + " " + apellidoEspecialista)
 
-    holaEspecialista()
-    mostrarCantTurnos()
+    holaEspecialista(); 
+    mostrarCantTurnos();
 
     var cajaDoctor = document.createElement('li');
     cajaDoctor.className = 'botonesPacientes';
@@ -126,32 +132,41 @@ function crearEspecialista() {
     seccionDoctores.style.display = "flex";
     seccionDoctores.appendChild(cajaDoctor);
 }
-
+var doctoresLista = [];
 function holaEspecialista() {
-    var holaEspecialista = document.createElement('p');
+    //var holaEspecialista = document.createElement('p');
     var info = document.createTextNode("Hola " + especialistas[especialistas.length - 1].nombre + " " + especialistas[especialistas.length - 1].apellido)
-    holaEspecialista.appendChild(info);
+    doctoresLista.push(info);
+    var ultimo = doctoresLista.length - 1;
     var contenedorholaEspecialista = document.getElementById('hola-doctor')
-    contenedorholaEspecialista.appendChild(holaEspecialista);
+    if (contenedorholaEspecialista.childNodes[0]){
+    contenedorholaEspecialista.removeChild(contenedorholaEspecialista.childNodes[0])
+    }
+    contenedorholaEspecialista.appendChild(doctoresLista[ultimo]);
+    
 }
 
 function solicitarTurno() {
     var tituloEspecialista = document.getElementById("turno-con").value
     pacientes[0].solicitarTurno(tituloEspecialista)
-    
+
 }
-function modificarTurno(id){
+function modificarTurno(id) {
     var valorBoolean = document.getElementById(id).value;
     var cantidadTurnos = parseInt(prompt("¿Cuantos Turnos?"))
-    especialistas[0].turnero(valorBoolean,cantidadTurnos);
+    especialistas[0].turnero(valorBoolean, cantidadTurnos);
     alert("Hecho")
-    mostrarCantTurnos() 
+    mostrarCantTurnos(); 
 }
-
-function mostrarCantTurnos(){
-    var h3conTurnos = document.createElement('h3');
-    var infoH3conTurnos = document.createTextNode("Usted tiene " + especialistas[0].turnosDisponibles + " turnos");
-    h3conTurnos.appendChild(infoH3conTurnos);    
+var h3conTurnos = []; 
+function mostrarCantTurnos() {
+    //var h3conTurnos = document.createElement('h3');
+    var infoH3conTurnos = document.createTextNode("Usted tiene " + especialistas[especialistas.length-1].turnosDisponibles + " turnos");
+    h3conTurnos.push(infoH3conTurnos);
+    ultimo = h3conTurnos.length - 1; 
     var contenedorh3conTurnos = document.getElementById("cantidad-turnos");
-    contenedorh3conTurnos.appendChild(h3conTurnos)
+    if (contenedorh3conTurnos.childNodes[0]){
+        contenedorh3conTurnos.removeChild(contenedorh3conTurnos.childNodes[0]);
+    }
+    contenedorh3conTurnos.appendChild(h3conTurnos[ultimo]);
 }
