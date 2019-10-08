@@ -1,5 +1,5 @@
 // Persona
-// VAAAAMOS NEWELLSs
+// VAAAAMOS NEWELLSS!!!!!!
 /* var Persona = function (nombre, apellido, dni) {
     this.nombre = nombre;
     this.apellido = apellido;
